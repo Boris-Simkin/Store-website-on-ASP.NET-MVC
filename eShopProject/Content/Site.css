@@ -1,18 +1,67 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+p {
+    direction: rtl;
 }
+
+.input-group input{
+    background-color: #3D6C96;
+}
+
+.body-content {
+    height: 600px;
+    background-color: gray;
+}
+
+#siteMap {
+    height: 600px;
+    background-color: #2F4F4F;
+}
+
+.partial {
+    text-align: right;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("http://lynxweb.com.ua/img/structura-internet-magazina.jpg");
+    /* Set a specific height */
+    height: 620px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 }
 
