@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace DAL.Models
+namespace eShopProject.Models
 {
-    public class Product
+    public class ProductView
     {
         public int ProductId { get; set; }
-        public ICollection<User> Owners { get; set; }
-        public ICollection<User> Users { get; set; }
+        //public ICollection<User> Owners { get; set; }
+        //public ICollection<User> Users { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
         public string ImageUrl { get; set; }

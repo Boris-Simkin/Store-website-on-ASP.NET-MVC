@@ -25,9 +25,9 @@ p {
     text-align: right;
 }
 
-.parallax {
+.header {
     /* The image used */
-    background-image: url("http://lynxweb.com.ua/img/structura-internet-magazina.jpg");
+    background-image: url("/Images/header-background.jpg");
     /* Set a specific height */
     height: 620px;
     /* Create the parallax scrolling effect */

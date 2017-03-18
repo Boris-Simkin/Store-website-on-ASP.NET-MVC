@@ -5,7 +5,7 @@ using System.Web;
 
 namespace eShopProject.Models
 {
-    public class User
+    public class UserView
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }

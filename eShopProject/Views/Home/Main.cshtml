@@ -3,5 +3,17 @@
     ViewBag.Title = "Main";
 }
 
-<h2>Main</h2>
+<!-- Header -->
+@Html.Partial("~/Views/Home/Header.cshtml")
 
+<!-- Site map -->
+@Html.Partial("~/Views/Home/SiteMap.cshtml")
+
+<!-- Body content -->
+<nav class="body-content" id="mainPage">
+    <div class="row">
+        <div class="col-xs-6"><div class="mini-box">1</div></div>
+        <div class="col-xs-6"><div class="mini-box">2</div></div>
+
+    </div>
+</nav>
