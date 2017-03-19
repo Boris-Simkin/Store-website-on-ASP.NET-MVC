@@ -1,19 +1,37 @@
-﻿
+﻿@model List<eShopProject.Models.ProductView>
 @{
     ViewBag.Title = "Main";
 }
 
 <!-- Header -->
-@Html.Partial("~/Views/Home/Header.cshtml")
+@Html.Partial("~/Views/Home/_Header.cshtml")
 
 <!-- Site map -->
-@Html.Partial("~/Views/Home/SiteMap.cshtml")
+@Html.Partial("~/Views/Home/_SiteMap.cshtml")
 
 <!-- Body content -->
 <nav class="body-content" id="mainPage">
-    <div class="row">
-        <div class="col-xs-6"><div class="mini-box">1</div></div>
-        <div class="col-xs-6"><div class="mini-box">2</div></div>
+
+    @*<div class="well well-sm">
+            <strong>Display</strong>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list">
+                    </span>List
+                </a> <a href="#" id="grid" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
+            </div>
+        </div>*@
+
+    <div id="products" class="row list-group">
+        @foreach (var item in Model)
+        {
+            <div class="item  col-xs-2 col-lg-2">
+                @Html.Partial("~/Views/_Item.cshtml", item)
+            </div>
+        }
+
 
     </div>
 </nav>

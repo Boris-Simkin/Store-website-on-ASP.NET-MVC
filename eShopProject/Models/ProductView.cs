@@ -12,7 +12,12 @@ namespace eShopProject.Models
         //public ICollection<User> Users { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
-        public string ImageUrl { get; set; }
+        public string LongDescription { get; set; }
+        public DateTime Date { get; set; }
         public double Price { get; set; }
+        public byte[] Picture1 { get; set; }
+        public byte[] Picture2 { get; set; }
+        public byte[] Picture3 { get; set; }
+        
     }
 }
