@@ -15,9 +15,26 @@ namespace DAL
             var products = new List<Product>();
             using (var context = new EShopEntities())
             {
-                products = context.Products.ToList();
+                products = context.Products.ToList();//.Include("ProductImage").ToList();
             }
             return products;
+        }
+
+        /// <summary>
+        /// Return all images of specific product
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        public ProductImage GetImages(int productId)
+        {
+            var images = new ProductImage();
+            using (var context = new EShopEntities())
+            {
+                images = (from p in context.Products
+                          where p.ProductId == productId
+                          select p.ProductImage).First();
+            }
+            return images;
         }
     }
 }

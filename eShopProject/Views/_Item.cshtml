@@ -16,7 +16,9 @@
 
 
 <div class="thumbnail" style="height: 150px; overflow: hidden;">
-    <img class="" src="@Html.Image(Model.Picture1)" alt="" />
+    @*<img class="" src="@Html.Image(Model.Picture1)" alt="" />*@
+    <img class="" src="@Url.Action("ShowImage", "Images", new { id = Model.ProductId, imageNumber = 1 })"  alt="" />
+    @*<img class="" src="@Url.Action("ShowImage", "Images", new { productView = Model })"  alt="" />*@
 </div>
 
 @*<p class="group inner list-group-item-text">

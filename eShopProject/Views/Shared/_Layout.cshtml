@@ -28,7 +28,17 @@
 
 <body id="page-top" class="index">
 
+    @{
+        string MainAction = string.Empty;
+        if (ViewContext.RouteData.Values["action"].ToString() != "Main")
+        { MainAction = Url.Action("Main"); }
+    }
 
+
+    @if (ViewContext.RouteData.Values["action"].ToString() != "Main")
+    {
+        <a href="@Url.Action("Main")#about">אודותנו</a>
+    }
 
 
     <!-- Navigation -->
@@ -52,26 +62,26 @@
                             </li>
 
                             <li class="page-scroll">
-                                <a href="#contact">סל קניות</a>
+                                @Html.ActionLink("סל קניות", "ShoppingCard")
                             </li>
                             <li class="page-scroll">
-                                <a href="#about">אודותנו</a>
+                                <a href="@MainAction#about">אודותנו</a>
                             </li>
                             <li class="page-scroll">
-                                <a href="#contact">רישום פרטים אישיים</a>
+                                @Html.ActionLink("רישום פרטים אישיים", "Registration")
                             </li>
                             <li class="page-scroll">
-                                <a href="#mainPage">מסך ראשי</a>
+                                <a href="@MainAction#mainPage">מסך ראשי</a>
                             </li>
                             <li class="page-scroll">
-                                <a href="#siteMap">מפת האתר</a>
+                                <a href="@MainAction#siteMap">מפת האתר</a>
                             </li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 partial">
-                    @Html.Partial("~/Views/_Login.cshtml")
+                    @Html.Partial("~/Views/_Login.cshtml", new eShopProject.Models.UserView())
                 </div>
             </div>
 

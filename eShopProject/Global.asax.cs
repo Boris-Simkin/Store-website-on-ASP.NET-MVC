@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using DAL.Models;
+using eShopProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +14,13 @@ namespace eShopProject
     {
         protected void Application_Start()
         {
+            //Mapping the Product entitys to view model
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<ProductImage, ProductImageView>();
+                cfg.CreateMap<Product, ProductView>();
+            });
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

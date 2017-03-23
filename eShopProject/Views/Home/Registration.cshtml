@@ -1,0 +1,33 @@
+﻿@model eShopProject.Models.UserView
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+
+<div class = "container" style="height:500px; margin-top:100px;">
+@using (Html.BeginForm("CreateUser", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-3">
+            @Html.TextBoxFor(x => x.FirstName)
+            @Html.DisplayNameFor(x => x.FirstName)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-3">
+            @Html.TextBoxFor(x => x.LastName)
+            @Html.DisplayNameFor(x => x.LastName)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-3">
+            @*@Html.TextBoxFor(model => DateTime.Now, 
+           new { @type = "date", @Value = Model.BirthDate.ToString("yyyy-MM-dd") })*@
+        </div>
+    </div>
+    <div class="row">
+         <input type="submit" value="רשום">
+    </div>
+}
+</div>

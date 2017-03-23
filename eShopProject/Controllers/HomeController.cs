@@ -18,12 +18,27 @@ namespace eShopProject.Controllers
             ProductManager pm = new ProductManager();
             var DALproducts = pm.GetProducts();
             //Converting the Product entity from the DAL
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<Product, ProductView>();
-            });
             List<ProductView> products = Mapper.Map<List<Product>, List<ProductView>>(DALproducts);
-            
             return View(products);
         }
+
+        public ActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateUser(User u)
+        {
+            if (!ModelState.IsValid)
+            {
+
+            }
+            //Adding the user to the DataBase
+
+            return RedirectToAction("Main", "Home");
+        }
+
+
     }
 }

@@ -13,11 +13,14 @@ namespace eShopProject.Models
         public string FirstName { get; set; }
         [Display(Name = "הכנס שם משפחה")]
         public string LastName { get; set; }
+        [Display(Name = "הכנס תאריך לידה")]
         public DateTime BirthDate { get; set; }
         [Display(Name = "הכנס שם דואר אלקטרוני")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "הכנס שם משתמש")]
         [Display(Name = "הכנס שם משתמש")]
         public string Username { get; set; }
+        [Required(ErrorMessage = "הכנס סיסמה")]
         [Display(Name = "הכנס סיסמה")]
         public string Password { get; set; }
     }

@@ -17,10 +17,14 @@ namespace DAL.Models
         public string LongDescription { get; set; }
         public DateTime? Date { get; set; }
         public double Price { get; set; }
-        [Column(TypeName = "image")]
-        public byte[] Picture1 { get; set; }
-        public byte[] Picture2 { get; set; }
-        public byte[] Picture3 { get; set; }
+        public ProductImage ProductImage { get; set; }
+
+        //[Column(TypeName = "image")]
+        //public byte[] Picture1 { get; set; }
+        //[Column(TypeName = "image")]
+        //public byte[] Picture2 { get; set; }
+        //[Column(TypeName = "image")]
+        //public byte[] Picture3 { get; set; }
 
     }
 }

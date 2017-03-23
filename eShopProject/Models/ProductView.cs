@@ -15,9 +15,11 @@ namespace eShopProject.Models
         public string LongDescription { get; set; }
         public DateTime Date { get; set; }
         public double Price { get; set; }
-        public byte[] Picture1 { get; set; }
-        public byte[] Picture2 { get; set; }
-        public byte[] Picture3 { get; set; }
-        
+
+        //public ProductImageView ProductImage { get; set; }
+        //public byte[] Picture1 { get; set; }
+        //public byte[] Picture2 { get; set; }
+        //public byte[] Picture3 { get; set; }
+
     }
 }

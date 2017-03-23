@@ -52,6 +52,7 @@
     <Compile Include="DB\EShopEntities.cs" />
     <Compile Include="DB\ContextInitializer.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
