@@ -7,19 +7,14 @@ namespace eShopProject.Models
 {
     public class ProductView
     {
-        public int ProductId { get; set; }
-        //public ICollection<User> Owners { get; set; }
-        //public ICollection<User> Users { get; set; }
+        public int Id { get; set; }
+        public string OwnerId { get; set; }
+        public string UserId { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public DateTime Date { get; set; }
         public double Price { get; set; }
-
-        //public ProductImageView ProductImage { get; set; }
-        //public byte[] Picture1 { get; set; }
-        //public byte[] Picture2 { get; set; }
-        //public byte[] Picture3 { get; set; }
 
     }
 }

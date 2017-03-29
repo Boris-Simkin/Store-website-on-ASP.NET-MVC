@@ -15,8 +15,8 @@ namespace eShopProject.Controllers
         // GET: Images
         public FileResult ShowImage(int id, int imageNumber)
         {
-            ProductManager pm = new ProductManager();
-            var DALproductImages = pm.GetImages(id);
+            ProductRepository repo = new ProductRepository();
+            var DALproductImages = repo.GetImages(id);
             //Converting the Image entity from the DAL
             var images = Mapper.Map<ProductImage, ProductImageView>(DALproductImages);
             byte[] res = images.Picture1;

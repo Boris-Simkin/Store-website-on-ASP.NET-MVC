@@ -19,6 +19,10 @@ namespace eShopProject
             {
                 cfg.CreateMap<ProductImage, ProductImageView>();
                 cfg.CreateMap<Product, ProductView>();
+                cfg.CreateMap<UserView, User>().
+                    ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Username));
+                cfg.CreateMap<User, UserView>().
+                    ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Id));
             });
 
             AreaRegistration.RegisterAllAreas();

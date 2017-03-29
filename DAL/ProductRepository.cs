@@ -8,16 +8,30 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ProductManager
+    public class ProductRepository : IRepository<Product>
     {
-        public List<Product> GetProducts()
+        public List<Product> List
         {
-            var products = new List<Product>();
-            //using (var context = new EShopEntities())
-            //{
-            //    products = context.Products.ToList();//.Include("ProductImage").ToList();
-            //}
-            return products;
+            get
+            {
+                var products = new List<Product>();
+                using (var context = new EShopEntities())
+                {
+                    products = context.Products.ToList();
+                }
+                return products;
+            }
+        }
+
+        public Product Find(string id)
+        {
+            int intId = int.Parse(id);
+            var product = new Product();
+            using (var context = new EShopEntities())
+            {
+                product = context.Products.Where(p => p.Id == intId).First();
+            }
+            return product;
         }
 
         /// <summary>
@@ -36,5 +50,6 @@ namespace DAL
             }
             return images;
         }
+
     }
 }

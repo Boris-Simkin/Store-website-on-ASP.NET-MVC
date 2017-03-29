@@ -11,13 +11,13 @@
     @Model.Title
 </h4>
 <h5 class="">
-    3/5/2017
+    @Model.Date
 </h5>
 
 
 <div class="thumbnail" style="height: 150px; overflow: hidden;">
     @*<img class="" src="@Html.Image(Model.Picture1)" alt="" />*@
-    <img class="" src="@Url.Action("ShowImage", "Images", new { id = Model.ProductId, imageNumber = 1 })"  alt="" />
+    <img class="" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })"  alt="" />
     @*<img class="" src="@Url.Action("ShowImage", "Images", new { productView = Model })"  alt="" />*@
 </div>
 
@@ -28,9 +28,9 @@
 <div class="row">
 
     <div class="col-xs-12 col-md-5">
-        <a class="btn btn-success btn-sm" href="http://www.jquery2dotnet.com">פרטים נוספים</a>
+        @Html.ActionLink("פרטים נוספים", "ProductInfo", new { id=Model.Id }, new { @class = "btn btn-success btn-sm" })
     </div>
     <div class="col-xs-12 col-md-5">
-        <a class="btn btn-success btn-sm" href="http://www.jquery2dotnet.com">הוסף לסל</a>
+        @Html.ActionLink("הוסף לסל", "ShoppingCard", new { id = Model.Id }, new { @class= "btn btn-success btn-sm" })
     </div>
 </div>

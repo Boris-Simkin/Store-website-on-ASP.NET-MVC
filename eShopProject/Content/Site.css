@@ -1,10 +1,30 @@
 ﻿body {
-    padding-top: 0px;
-    padding-bottom: 0px;
+   padding:0px;
 }
 
-p {
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+input[type=date] {
+  border: 1px solid #c4c4c4;
+  padding: 5px 12px;
+  width: 181px;
+  color: #555555;
+}
+
+.heb-text {
     direction: rtl;
+}
+
+.login-name {
+    color: white;
 }
 
 .input-group input{
@@ -16,6 +36,22 @@ p {
     background-color: gray;
 }
 
+#productInfo {
+    margin-top: 150px;
+    height: 70vh;
+}
+
+#addProduct{
+    margin-top: 150px;
+    /*direction: rtl;*/
+    /*text-align: right;*/
+}
+
+#registration{
+    margin-top: 150px;
+    height: 70vh;
+}
+
 #siteMap {
     height: 600px;
     background-color: #2F4F4F;
@@ -23,6 +59,11 @@ p {
 
 .partial {
     text-align: right;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
 }
 
 .header {

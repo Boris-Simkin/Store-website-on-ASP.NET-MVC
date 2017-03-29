@@ -1,0 +1,35 @@
+﻿@model  eShopProject.Models.ProductView
+@{
+    ViewBag.Title = "ProductInfo";
+}
+
+<div class="container" id="productInfo">
+
+    <div class="row">
+        <!-- Product Info-->
+
+        <div class="col-xs-12 col-sm-6">
+            <h3 id="product-title">
+                @Model.Title
+            </h3>
+ 
+            <h4 >תיאור המוצר</h4>
+            <p>@Model.ShortDescription</p>
+            <p>@Model.LongDescription</p>
+            <div>פורסם בתאריך:  @Model.Date.ToShortDateString()</div> 
+            <div>שם המפרסם:  @Model.OwnerId</div>
+            <div>מחיר:  @Model.Price</div> 
+            <div class="btn-group" role="group" aria-label="..." style="margin-bottom:10px;">
+                <button type="button" class="btn btn-default btn-success" onclick="location.href='@Url.Action("ShoppingCard", "Home")'"><span class="fa fa-plus"></span>&nbsp;הוסף לסל</button>
+                <button type="button" class="btn btn-default btn-danger" onclick="location.href='@Url.Action("Main", "Home")#mainPage'"><span class="fa fa-close"></span>&nbsp;חזור</button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            @*<img src="http://contents.louisvuitton.com/is/image/lv/1/PP_VP_M/louis-vuitton-turenne-pm-monogram-canvas-handbags--M48813_PM2_Front%20view.jpg?wid=639&amp;hei=639" class="img-responsive product-image-large">*@
+            <img class="img-responsive product-image-large" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })" alt="" />
+
+        </div>
+
+    </div>
+
+</div>

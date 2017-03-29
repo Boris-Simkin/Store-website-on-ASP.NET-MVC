@@ -1,27 +1,59 @@
-﻿@model eShopProject.Models.UserView
+﻿@model eShopProject.Models.LoginView
 
 <div class="fluid-container">
     <div class="row">
-        @if (Model != null)
+        @if (!User.Identity.IsAuthenticated)
         {
-            <form>
-                <div class="col-lg-10 col-xs-10">
-                    <div class="input-group input-group-sm">
-                        <input type="email" class="form-control" id="email" placeholder="שם">
-                        <input type="password" class="form-control" id="pwd" placeholder="סיסמא">
+            using (Html.BeginForm("Login", "Account"))
+            {
+                <div class="col-lg-12">
+                    <table>
+                        <tr>
+                            <th>
+                                <div class="input-group input-group-sm">
+                                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "שם משתמש" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "סיסמה" })
+                                </div>
+
+                            </th>
+                            <th>
+                                <div class="btn-group-vertical btn-group-sm col-lg-offset-1">
+                                    <input type="submit" value="היכנס" class="btn btn-info" />
+                                    <button type="submit" class="btn btn-info" onclick="location.href = '@Url.Action("Registration","Account")'">רישום</button>
+                                </div>
+
+                            </th>
+                        </tr>
+                    </table>
+
+              
                     </div>
-                </div>
-                <div class="col-lg-2 col-xs-2">
-                    <div class="btn-group-vertical btn-group-sm col-lg-offset-1">
-                        <button type="submit" class="btn btn-info">היכנס</button>
-                        <button type="submit" class="btn btn-info">רישום</button>
-                    </div>
-                </div>
-            </form>
+            }
         }
         else
         {
-            <h1>אתה מחובר</h1>
+            using (Html.BeginForm("LogOff", "Account"))
+            {
+
+            <div class="col-lg-12 col-xs-12 heb-text login-name">
+                @*Display greeting*@
+                @if (DateTime.Now.Hour <12)
+                {
+                    @:בוקר טוב,
+                }
+                else if (DateTime.Now.Hour < 17)
+                {
+                    @:צהריים טובים,
+                }
+                else
+                {
+                    @:ערב טוב,
+                }
+                &nbsp @User.Identity.Name
+                <br/>
+                <input type="submit" value="התנתק" class="btn btn-info" />
+            </div>
+            }
         }
 
     </div>
