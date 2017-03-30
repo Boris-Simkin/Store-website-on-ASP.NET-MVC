@@ -1,0 +1,27 @@
+﻿@model List<eShopProject.Models.ProductView>
+
+
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+    @*number of items*@
+    @{int ItemsCount = Model.Count; }
+    @for (int i = 0; i < ItemsCount; i += 4)
+    {
+        //add active class to the first row
+        string active = i == 0 ? "active" : "";
+        <div class="item @active">
+            <div class="row">
+                @for (int j = i; j < i + 4 && j < ItemsCount; j++)
+                {
+                    @Html.Partial("~/Views/_Item.cshtml", Model[j])
+                }
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+
+

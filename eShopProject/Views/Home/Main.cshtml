@@ -14,9 +14,7 @@
 <!-- Body content -->
 <nav class="body-content" id="mainPage">
 
-    <script>
 
-    </script>
 
     <div class="container">
         <div class="row">
@@ -26,67 +24,55 @@
                 </h3>
             </div>
         </div>
-        <div class="row" style="direction: ltr;">
-            <div class="row">
-
-                <div class="col-md-3">
-                    <!-- Controls -->
-                    <div class="controls pull-right hidden-xs">
-                        <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
-                           data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
-                                                    data-slide="next"></a>
-                    </div>
+        <div class="row">
+            <div class="col-md-2 col-lg-2">
+                <!-- Controls -->
+                <div class="hidden-xs">
+                    <a class="fa fa-chevron-right btn btn-success" href="#carousel-example"
+                       data-slide="prev" onclick="updatePageNumber()"></a>
+                    <b>עמוד <span class="num">1</span></b>
+                    <a class="fa fa-chevron-left btn btn-success" href="#carousel-example"
+                       data-slide="next" onclick="updatePageNumber()"></a>
                 </div>
             </div>
-            <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-interval="false" data-wrap="false">
-                @*number of items*@
-                @{int ItemsCount = Model.Count; }
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    @for (int i = 0; i < ItemsCount; i += 4)
+            <div class="col-md-3 col-lg-3">
+                    @using (Ajax.BeginForm("ProductList", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "products", OnComplete = "updatePageNumber()" }))
                     {
-                        //add active class to the first row
-                        string active = i == 0 ? "active" : "";
-                            <div class="item @active">
-                                <div class="row">
-                                    @for (int j = i; j < i + 4 && j < ItemsCount; j++)
-                                    {
-                                        @Html.Partial("~/Views/_Item.cshtml", Model[j])
-                                    }
-                                </div>
-                            </div>
-                     }
+                        <b>מיין לפי</b>
+                        <div class="btn-group btn-group-sm">
+                            <input type="submit" class="btn btn-success" value="כותרת" name="ButtonType"/>
+                            <input type="submit" class="btn btn-success" value="תאריך" name="ButtonType"/>
+                            <input type="submit" class="btn btn-success" value="מחיר" name="ButtonType" />
+                        </div>
+                    }
+            </div>
+        </div>
 
 
-                    @*<div class="item active">    
-                            <div class="row">
+        <br /><br /><br />
+        <div class="row" style="direction: ltr;">
 
-                                @for (int i = 0; i < 2; i++)
-                                {
-                                    @Html.Partial("~/Views/_Item.cshtml", Model[i])
-                                }
+            <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-interval="false" data-wrap="false">
 
-                            </div>
-                    </div>*@
-
-
+                @*here the list of products*@
+                <div id="products">
+                    @Html.Partial("_ProductList", Model)
                 </div>
+
             </div>
         </div>
     </div>
 
-
-
-
-
-    @*<div id="products" class="row list-group">
-            @foreach (var item in Model)
-            {
-                <div class="item  col-xs-2 col-lg-2">
-                    @Html.Partial("~/Views/_Item.cshtml", item)
-                </div>
-            }
-
-
-        </div>*@
 </nav>
+
+<script>
+    function updatePageNumber() {
+        
+        setTimeout(function () {
+            var currentIndex = $('div.active').index() + 1;
+            $('.num').html(currentIndex);
+        }, 800);
+
+        
+    }
+</script>

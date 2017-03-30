@@ -25,8 +25,26 @@ namespace eShopProject.Controllers
 
         public ActionResult ShoppingCard()
         {
-          
             return View();
+        }
+
+        public ActionResult ProductList(string ButtonType)
+        {
+            var DALproducts = repo.List;
+            //Converting the Product entity from the DAL
+            List<ProductView> products = Mapper.Map<List<Product>, List<ProductView>>(DALproducts);
+
+            switch (ButtonType)
+            {
+                case "כותרת":
+                    return PartialView("_ProductList", products.OrderBy(p => p.Title).ToList());
+                case "תאריך":
+                    return PartialView("_ProductList", products.OrderBy(p => p.Date).ToList());
+                case "מחיר":
+                    return PartialView("_ProductList", products.OrderBy(p => p.Price).ToList());
+                default:
+                    return View(products);
+            }
         }
 
         public ActionResult ProductInfo(int id)
