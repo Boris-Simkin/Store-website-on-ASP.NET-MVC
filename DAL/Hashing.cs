@@ -9,7 +9,7 @@ namespace DAL
 {
     internal class Hashing
     {
-        internal string GenerateSalt()
+        string GenerateSalt()
         {
             var rng = new RNGCryptoServiceProvider();
             var buffer = new byte[10];
@@ -33,6 +33,15 @@ namespace DAL
 
                 return sb.ToString();
             }
+        }
+        //Salting & hashing the password
+        internal string EncryptPass(string password)
+        {
+            Hashing hashing = new Hashing();
+            //Creating random salt
+            string salt = GenerateSalt();
+            //Hashing the password with the salt
+            return salt + HashPassword(password, salt);
         }
     }
 }

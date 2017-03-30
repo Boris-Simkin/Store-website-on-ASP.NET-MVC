@@ -11,16 +11,8 @@ namespace DAL
 {
     public class UserRepository : IRepository<User>
     {
-        //Salting & encrypting the password
-        string EncryptPass(string password)
-        {
-            Hashing hashing = new Hashing();
-            //Creating random salt
-            string salt = hashing.GenerateSalt();
-            //Hashing the password with the salt
-            return salt + hashing.HashPassword(password, salt); 
-        }
 
+        Hashing hashing = new Hashing();
         public List<User> List
         {
             get
@@ -72,7 +64,6 @@ namespace DAL
             string salt = user.Password.Substring(0, 16);
             //Retrieving the pass from the string
             string dbPass = user.Password.Substring(16);
-            Hashing hashing = new Hashing();
             //Comparing user hashed password with the database password
             return hashing.HashPassword(password, salt) == dbPass;
         }
@@ -80,7 +71,7 @@ namespace DAL
         public void Update(User newUser)
         {
             //Replacing the plain password with the encrypted
-            newUser.Password = EncryptPass(newUser.Password);
+            newUser.Password = hashing.EncryptPass(newUser.Password);
             using (var context = new EShopEntities())
             {
                 var user = context.Users.First(u => u.Id == newUser.Id);
@@ -94,7 +85,7 @@ namespace DAL
         public bool TryRegister(User user)
         {
             //Replacing the plain password with the encrypted
-            user.Password = EncryptPass(user.Password);
+            user.Password = hashing.EncryptPass(user.Password);
             using (var context = new EShopEntities())
             {
                 var isExist = context.Users.Any(u => u.Id == user.Id);

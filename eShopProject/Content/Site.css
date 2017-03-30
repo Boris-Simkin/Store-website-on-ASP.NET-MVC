@@ -19,6 +19,10 @@ input[type=date] {
   color: #555555;
 }
 
+#mainPage {
+    padding-top: 10px;
+}
+
 .heb-text {
     direction: rtl;
 }

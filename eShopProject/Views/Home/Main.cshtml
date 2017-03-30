@@ -1,4 +1,6 @@
-﻿@model List<eShopProject.Models.ProductView>
+﻿<link href="~/Content/ProductList.css" rel="stylesheet">
+
+@model List<eShopProject.Models.ProductView>
 @{
     ViewBag.Title = "Main";
 }
@@ -12,26 +14,79 @@
 <!-- Body content -->
 <nav class="body-content" id="mainPage">
 
-    @*<div class="well well-sm">
-            <strong>Display</strong>
-            <div class="btn-group">
-                <a href="#" id="list" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th-list">
-                    </span>List
-                </a> <a href="#" id="grid" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th"></span>Grid
-                </a>
+    <script>
+
+    </script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>
+                    רשימת המוצרים
+                </h3>
             </div>
-        </div>*@
+        </div>
+        <div class="row" style="direction: ltr;">
+            <div class="row">
 
-    <div id="products" class="row list-group">
-        @foreach (var item in Model)
-        {
-            <div class="item  col-xs-2 col-lg-2">
-                @Html.Partial("~/Views/_Item.cshtml", item)
+                <div class="col-md-3">
+                    <!-- Controls -->
+                    <div class="controls pull-right hidden-xs">
+                        <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
+                           data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
+                                                    data-slide="next"></a>
+                    </div>
+                </div>
             </div>
-        }
+            <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-interval="false" data-wrap="false">
+                @*number of items*@
+                @{int ItemsCount = Model.Count; }
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @for (int i = 0; i < ItemsCount; i += 4)
+                    {
+                        //add active class to the first row
+                        string active = i == 0 ? "active" : "";
+                            <div class="item @active">
+                                <div class="row">
+                                    @for (int j = i; j < i + 4 && j < ItemsCount; j++)
+                                    {
+                                        @Html.Partial("~/Views/_Item.cshtml", Model[j])
+                                    }
+                                </div>
+                            </div>
+                     }
 
 
+                    @*<div class="item active">    
+                            <div class="row">
+
+                                @for (int i = 0; i < 2; i++)
+                                {
+                                    @Html.Partial("~/Views/_Item.cshtml", Model[i])
+                                }
+
+                            </div>
+                    </div>*@
+
+
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+    @*<div id="products" class="row list-group">
+            @foreach (var item in Model)
+            {
+                <div class="item  col-xs-2 col-lg-2">
+                    @Html.Partial("~/Views/_Item.cshtml", item)
+                </div>
+            }
+
+
+        </div>*@
 </nav>

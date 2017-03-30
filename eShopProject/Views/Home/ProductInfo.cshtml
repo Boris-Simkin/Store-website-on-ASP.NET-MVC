@@ -18,7 +18,7 @@
             <p>@Model.LongDescription</p>
             <div>פורסם בתאריך:  @Model.Date.ToShortDateString()</div> 
             <div>שם המפרסם:  @Model.OwnerId</div>
-            <div>מחיר:  @Model.Price</div> 
+            <div>מחיר:  $@Model.Price</div> 
             <div class="btn-group" role="group" aria-label="..." style="margin-bottom:10px;">
                 <button type="button" class="btn btn-default btn-success" onclick="location.href='@Url.Action("ShoppingCard", "Home")'"><span class="fa fa-plus"></span>&nbsp;הוסף לסל</button>
                 <button type="button" class="btn btn-default btn-danger" onclick="location.href='@Url.Action("Main", "Home")#mainPage'"><span class="fa fa-close"></span>&nbsp;חזור</button>
