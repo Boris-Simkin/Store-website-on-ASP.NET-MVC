@@ -1,7 +1,71 @@
 ﻿
+@model List<eShopProject.Models.ProductView>
 @{
     ViewBag.Title = "ShoppingCard";
 }
 
-<h2>ShoppingCard</h2>
 
+<div class="container" id="ShoppingCard">
+    <div class="row">
+        @if (Model.Any())
+        {
+            <h3>המוצרים שבחרת</h3>
+        }
+        else
+        {
+            <h3>הרשימה ריקה</h3>
+        }
+
+        <br />
+        <div class="col-md-3">
+            @using (Ajax.BeginForm("FilterOrderList", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "TotalPrice", OnComplete = "" }))
+            {
+                //this button is not invoked directly but by pressing on any checkbox
+                <input type="submit" value="" style="visibility:hidden" />
+
+                double totalPrice = 0;
+
+                foreach (var item in Model)
+                {
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="check" name="checkedProducts" value="@item.Id" checked="checked" style="float: right;">
+                            @item.Title - $@item.Price
+                        </label>
+                    </div>
+                    totalPrice += item.Price;
+
+                }
+                if (Model.Any())
+                {
+                    <br /><br /><br /><br />
+                    <h4>לתשלום: </h4>
+                    <div id="TotalPrice">
+                        @Html.Partial("_TotalPrice", totalPrice)
+                    </div>
+                }
+
+
+            }
+
+        </div>
+    </div>
+    @if (Model.Any())
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <br />
+                <input type="submit" name="submit" id="submit" value="רכישה" class="btn btn-info">
+                <br />
+                <br />
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $(".check").click(function () {
+        $("#form0").submit();
+    });
+</script>

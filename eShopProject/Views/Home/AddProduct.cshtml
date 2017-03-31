@@ -1,64 +1,146 @@
-﻿
+﻿@model eShopProject.Models.ProductView
 @{
     ViewBag.Title = "AddProduct";
 }
-<style>
 
-</style>
+<div class="container" id="addProduct">
+    <div class="col-lg-4 col-md-4 col-sm-4">
 
-<div class="container" id="addProduct" style="">
-    <div class="">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="">
-                    <input id="product_id" name="product_id" placeholder="PRODUCT ID" class="form-control input-md" required="" type="text">
 
+        @using (Html.BeginForm("SaveProduct", "Home", FormMethod.Post,
+                                            new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="row">
+                    <div class="form-group">
+                        <div class="input-group">
+                            @Html.DisplayNameFor(x => x.Title)
+                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control input-md", placeholder = @Html.DisplayNameFor(x => x.Title) })
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="">
-                    <input id="product_id" name="product_id" placeholder="PRODUCT ID" class="form-control input-md" required="" type="text">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="input-group">
+                            @Html.DisplayNameFor(x => x.ShortDescription)
+                            @Html.TextBoxFor(x => x.ShortDescription, new { @class = "form-control input-md", placeholder = @Html.DisplayNameFor(x => x.ShortDescription) })
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Text input-->
-        <div class="row">
-                <div class="col-lg-4">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div>@Html.DisplayNameFor(x => x.LongDescription)</div>
+                            @Html.TextAreaFor(x => x.LongDescription, new { @class = "form-control input-md", placeholder = @Html.DisplayNameFor(x => x.LongDescription) })
 
-                    <input id="product_id" name="product_id" placeholder="PRODUCT ID" class="form-control input-md" required="" type="text">
-
+                        </div>
+                    </div>
                 </div>
-                <label class="col-lg-2 control-label" for="product_id">PRODUCT ID</label>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="input-group">
+                            @Html.DisplayNameFor(x => x.Price)
+                            @Html.TextBoxFor(x => x.Price, new { @class = "form-control input-md", placeholder = @Html.DisplayNameFor(x => x.Price) })
+
+                        </div>
+                    </div>
+                </div>
+
+                 <div>
+                     תמונות
+                     </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button id="fake-file-button-browse1" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-file"></span>
+                    </button>
+                </span>
+                <input type="file" id="file1" name="file1" style="display:none">
+                <input type="text" id="fake-file-input-name1" disabled="disabled" placeholder="File not selected" class="form-control">
+
             </div>
 
-        <!-- Image 1-->
-        <div class="row col-md-push-4">
-            <label class="col-lg-4 control-label" for="filebutton">main_image</label>
-            <div class="col-lg-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
-            </div>
-        </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button id="fake-file-button-browse2" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-file"></span>
+                    </button>
+                </span>
+                <input type="file" id="file2" name="file2" style="display:none">
+                <input type="text" id="fake-file-input-name2" disabled="disabled" placeholder="File not selected" class="form-control">
 
-        <!-- Image 2 -->
-        <div class="row">
-            <label class="col-lg-4 control-label" for="filebutton">main_image</label>
-            <div class="col-lg-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
             </div>
-        </div>
 
-        <!-- Image 3 -->
-        <div class="form-group">
-            <label class="col-lg-4 control-label" for="filebutton">main_image</label>
-            <div class="col-lg-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button id="fake-file-button-browse3" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-file"></span>
+                    </button>
+                </span>
+                <input type="file" id="file3" name="file3" style="display:none">
+                <input type="text" id="fake-file-input-name3" disabled="disabled" placeholder="File not selected" class="form-control">
+
             </div>
-        </div>
+            <br/>
+            <br />
+            <input type="submit" name="submit" value="הוסף" class="btn btn-info"/>
+
+        }
+
+
+
+
+        <script type="text/javascript">
+            // Fake file upload
+            document.getElementById('fake-file-button-browse1').addEventListener('click', function() {
+                document.getElementById('file1').click();
+            });
+
+            document.getElementById('file1').addEventListener('change', function () {
+	            document.getElementById('fake-file-input-name1').value = this.value;
+
+	            document.getElementById('fake-file-button-upload1').removeAttribute('disabled');
+            });
+
+            document.getElementById('fake-file-button-browse2').addEventListener('click', function () {
+                document.getElementById('file2').click();
+            });
+
+            document.getElementById('file2').addEventListener('change', function () {
+                document.getElementById('fake-file-input-name2').value = this.value;
+
+                document.getElementById('fake-file-button-upload2').removeAttribute('disabled');
+            });
+
+            document.getElementById('fake-file-button-browse3').addEventListener('click', function () {
+                document.getElementById('file3').click();
+            });
+
+            document.getElementById('file3').addEventListener('change', function () {
+                document.getElementById('fake-file-input-name3').value = this.value;
+
+                document.getElementById('fake-file-button-upload3').removeAttribute('disabled');
+            });
+        </script>
+
+
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong> @Html.ValidationSummary(false, "", new { @class = "alert alert-danger text-danger heb-text" })</strong>
+            </div>
+        }
+
+    </div>
+
 </div>
 

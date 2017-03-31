@@ -16,14 +16,6 @@ namespace eShopProject.Controllers
     {
         UserRepository repository = new UserRepository();
 
-        //public ActionResult GetUser(string username)
-        //{
-        //    UserView user = new UserView();
-        //    User DALUser = repository.Find(username);
-        //    user = Mapper.Map<User, UserView>(DALUser);
-        //    return View(user);
-        //}
-
         public ActionResult Registration()
         {
             UserView user = new UserView();
@@ -64,7 +56,6 @@ namespace eShopProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                //UserRepository repository = new UserRepository();
                 bool userValid = repository.Login(login.Username, login.Password);
 
                 //Found in the repository

@@ -1,30 +1,6 @@
 ﻿@*Single product view*@
 @model  eShopProject.Models.ProductView
 
-
-@*<h4 class="" style="text-align: center; height: 15px; overflow: hidden;">
-    @Model.Title
-</h4>
-<h5 class="">
-    @Model.Date
-</h5>
-
-
-<div class="thumbnail" style="height: 150px; overflow: hidden;">
-    <img class="" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })"  alt="" />
-</div>
-
-
-<div class="row">
-
-    <div class="col-xs-12 col-md-5">
-        @Html.ActionLink("פרטים נוספים", "ProductInfo", new { id=Model.Id }, new { @class = "btn btn-success btn-sm" })
-    </div>
-    <div class="col-xs-12 col-md-5">
-        @Html.ActionLink("הוסף לסל", "ShoppingCard", new { id = Model.Id }, new { @class= "btn btn-success btn-sm" })
-    </div>
-</div>*@
-
 <div class="col-sm-3">
     <div class="col-item">
         <div class="photo">
@@ -35,7 +11,7 @@
         <div class="info">
             <div class="row">
                 <div class="price col-md-6">
-                    <h5>
+                    <h5 style="height: 40px">
                         @Model.Title
                     </h5>
                     <h5 class="price-text-color">
@@ -47,17 +23,11 @@
             <div class="separator clear-left">
                 <p class="btn-add">
                     <i class="fa fa-shopping-cart"></i>
-                    @Html.ActionLink("הוסף לסל", "ShoppingCard", new { id = Model.Id }, new { @class = "hidden-sm" })
-
-
-                    @*<a href="http://www.jquery2dotnet.com" class="hidden-sm">הוסף לסל</a>*@
+                    @Html.ActionLink("הוסף לסל", "AddToCard", new { id = Model.Id }, new { @class = "hidden-sm" })
                 </p>
                 <p class="btn-details">
                     <i class="fa fa-list"></i>
                     @Html.ActionLink("פרטים נוספים", "ProductInfo", new { id = Model.Id }, new { @class = "hidden-sm" })
-
-
-                    @*<a href="http://www.jquery2dotnet.com" class="hidden-sm">פרטים נוספים</a>*@
                 </p>
             </div>
             <div class="clearfix">

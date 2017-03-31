@@ -1,0 +1,9 @@
+﻿@model double
+@*standard total price*@
+<div>$@Model</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <h4>לתשלום חבר: </h4>
+    @*total price with discount*@
+    <div class="totalPriceDiscount">$@(Model - Model / 10)</div>
+}

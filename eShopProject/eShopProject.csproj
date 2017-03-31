@@ -196,6 +196,7 @@
     <Content Include="Views\Home\ProductInfo.cshtml" />
     <Content Include="Views\Home\ShoppingCard.cshtml" />
     <Content Include="Views\Home\_ProductList.cshtml" />
+    <Content Include="Views\Home\_TotalPrice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

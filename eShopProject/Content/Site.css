@@ -40,6 +40,11 @@ input[type=date] {
     background-color: gray;
 }
 
+#ShoppingCard{
+    margin-top: 150px;
+    min-height: 400px;
+}
+
 #productInfo {
     margin-top: 150px;
     height: 70vh;
@@ -47,8 +52,7 @@ input[type=date] {
 
 #addProduct{
     margin-top: 150px;
-    /*direction: rtl;*/
-    /*text-align: right;*/
+    height: 550px
 }
 
 #registration{

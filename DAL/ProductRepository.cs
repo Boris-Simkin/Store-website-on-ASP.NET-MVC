@@ -51,5 +51,22 @@ namespace DAL
             return images;
         }
 
+        public void AddProduct()
+        {
+
+        }
+
+        //public void AddToCard(int productId, string userId)
+        //{
+        //    var product = new Product();
+        //    using (var context = new EShopEntities())
+        //    {
+        //        product = context.Products.First(p => p.Id == productId);
+        //        //Update row
+        //        product.UserId = userId;
+        //        context.SaveChanges();
+        //    }
+        //}
+
     }
 }
