@@ -17,6 +17,12 @@
         }
 
         <br />
+        @*@using (Ajax.BeginForm("AddToCard", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "AddRemoveBtn", OnComplete = "" }))
+        {
+            <div id="AddRemoveBtn">
+                <input type="submit" name="button" value="הוסף לסל" class="hidden-sm"/>
+            </div>
+        }*@
         <div class="col-md-3">
             @using (Ajax.BeginForm("FilterOrderList", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "TotalPrice", OnComplete = "" }))
             {
@@ -45,7 +51,6 @@
                         @Html.Partial("_TotalPrice", totalPrice)
                     </div>
                 }
-
 
             }
 

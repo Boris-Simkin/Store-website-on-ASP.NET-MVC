@@ -11,7 +11,6 @@ namespace eShopProject.Models
         public byte[] Picture1 { get; set; }
         public byte[] Picture2 { get; set; }
         public byte[] Picture3 { get; set; }
-
         
     }
 }

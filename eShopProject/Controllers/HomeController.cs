@@ -52,6 +52,8 @@ namespace eShopProject.Controllers
 
             return View(products);
         }
+        
+        
 
         public ActionResult AddToCard(int id)
         {
@@ -62,7 +64,17 @@ namespace eShopProject.Controllers
             }
             //Checks if the item already added to the shopping list
             if (products.Exists(p => p.Id == id))
-                return RedirectToAction("Main");
+            {
+                //Remove the item from the list
+                products.Remove(products.First(p => p.Id == id));
+                //Assign the new list to the session
+                Session["ShoppingCard"] = products;
+                Session["FilteredShoppingCard"] = products;
+                return PartialView("_AddBtn");
+            }
+                
+
+            //return RedirectToAction("Main");
             //Retrieving the product from the db by id
             var DALProduct = repo.Find(id.ToString());
             //Converting the product to view model
@@ -72,7 +84,7 @@ namespace eShopProject.Controllers
             //Adding the list to the session
             Session["ShoppingCard"] = products;
             Session["FilteredShoppingCard"] = products;
-            return RedirectToAction("Main");
+            return PartialView("_RemoveBtn");//RedirectToAction("Main");
         }
 
         //the method convertes from Image to byte[]

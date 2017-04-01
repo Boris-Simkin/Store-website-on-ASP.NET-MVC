@@ -75,4 +75,10 @@
 
         
     }
+    $('.addToList').click(function (e) {
+
+        $("#itemsList-" + event.target.id).submit();
+        // Cancel the default action
+        e.preventDefault();
+    });
 </script>

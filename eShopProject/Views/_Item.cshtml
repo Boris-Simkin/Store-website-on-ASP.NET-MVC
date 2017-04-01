@@ -20,10 +20,24 @@
                 </div>
 
             </div>
+
+           
+            <form action="/Home/AddToCard?id=@Model.Id" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#b-@Model.Id" id="itemsList-b-@Model.Id" method="post">
+                @*this button is not invoked directly but by pressing on AddToCard*@
+                <input type="submit" style="visibility:hidden" />
+            </form>
+
             <div class="separator clear-left">
                 <p class="btn-add">
                     <i class="fa fa-shopping-cart"></i>
-                    @Html.ActionLink("הוסף לסל", "AddToCard", new { id = Model.Id }, new { @class = "hidden-sm" })
+                    @if (Session["ShoppingCard"] != null && ((List<eShopProject.Models.ProductView>)Session["ShoppingCard"]).Exists(p => p.Id == Model.Id))
+                    {
+                        <a class="hidden-sm addToList" href=""><span id="b-@Model.Id">הסר מהסל</span></a>
+                    }
+                    else
+                    {
+                        <a class="hidden-sm addToList" href=""><span id="b-@Model.Id">הוסף לסל</span></a>
+                    }
                 </p>
                 <p class="btn-details">
                     <i class="fa fa-list"></i>
@@ -35,4 +49,5 @@
         </div>
     </div>
 </div>
+
 
