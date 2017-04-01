@@ -52,8 +52,8 @@ namespace eShopProject.Controllers
 
             return View(products);
         }
-        
-        
+
+
 
         public ActionResult AddToCard(int id)
         {
@@ -72,9 +72,7 @@ namespace eShopProject.Controllers
                 Session["FilteredShoppingCard"] = products;
                 return PartialView("_AddBtn");
             }
-                
 
-            //return RedirectToAction("Main");
             //Retrieving the product from the db by id
             var DALProduct = repo.Find(id.ToString());
             //Converting the product to view model
@@ -84,7 +82,7 @@ namespace eShopProject.Controllers
             //Adding the list to the session
             Session["ShoppingCard"] = products;
             Session["FilteredShoppingCard"] = products;
-            return PartialView("_RemoveBtn");//RedirectToAction("Main");
+            return PartialView("_RemoveBtn");
         }
 
         //the method convertes from Image to byte[]
@@ -94,6 +92,7 @@ namespace eShopProject.Controllers
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
             return ms.ToArray();
         }
+        [Authorize]
         public ActionResult SaveProduct(HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, ProductView product)
         {
             if (!ModelState.IsValid)
@@ -104,12 +103,28 @@ namespace eShopProject.Controllers
             //Inserting owner name from the cookie
             product.OwnerId = User.Identity.Name;
 
+            byte[] imgData1 = null;
+            byte[] imgData2 = null;
+            byte[] imgData3 = null;
             //Converting the photos to byte[]
-            byte[] imgData1 = imageToByteArray(Image.FromStream(file1.InputStream, true, true));
-            byte[] imgData2 = imageToByteArray(Image.FromStream(file2.InputStream, true, true));
-            byte[] imgData3 = imageToByteArray(Image.FromStream(file3.InputStream, true, true));
+            if (file1 != null)
+                imgData1 = imageToByteArray(Image.FromStream(file1.InputStream, true, true));
+            if (file2 != null)
+                imgData2 = imageToByteArray(Image.FromStream(file2.InputStream, true, true));
+            if (file3 != null)
+                imgData3 = imageToByteArray(Image.FromStream(file3.InputStream, true, true));
+
+            var DALProduct = Mapper.Map<ProductView, Product>(product);
+            repo.AddProduct(DALProduct, imgData1, imgData2, imgData3);
             return RedirectToAction("Main");
         }
+
+        [Authorize]
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
         public ActionResult ProductList(string ButtonType)
         {
             var DALproducts = repo.List;
@@ -128,6 +143,12 @@ namespace eShopProject.Controllers
                     return View(products);
             }
         }
+        public ActionResult PurchaseComplete()
+        {
+            Session["ShoppingCard"] = null;
+            Session["FilteredShoppingCard"] = null;
+            return View();
+        }
 
         public ActionResult ProductInfo(int id)
         {
@@ -136,11 +157,7 @@ namespace eShopProject.Controllers
             return View(product);
         }
 
-        [Authorize]
-        public ActionResult AddProduct()
-        {
-            return View();
-        }
+
 
     }
 }

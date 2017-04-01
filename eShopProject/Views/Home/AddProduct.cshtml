@@ -6,11 +6,9 @@
 <div class="container" id="addProduct">
     <div class="col-lg-4 col-md-4 col-sm-4">
 
-
         @using (Html.BeginForm("SaveProduct", "Home", FormMethod.Post,
                                             new { enctype = "multipart/form-data" }))
         {
-
             <div class="row">
                     <div class="form-group">
                         <div class="input-group">
@@ -45,7 +43,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             @Html.DisplayNameFor(x => x.Price)
-                            @Html.TextBoxFor(x => x.Price, new { @class = "form-control input-md", placeholder = @Html.DisplayNameFor(x => x.Price) })
+                            @Html.TextBoxFor(x => x.Price, new { @type = "number", @class = "form-control input-md", placeholder = @Html.DisplayNameFor(x => x.Price) })
 
                         </div>
                     </div>

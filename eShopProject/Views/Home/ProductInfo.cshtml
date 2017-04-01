@@ -11,19 +11,19 @@
             <h3 id="product-title">
                 @Model.Title
             </h3>
- 
-            <h4 >תיאור המוצר</h4>
+
+            <h4>תיאור המוצר</h4>
             <p>@Model.ShortDescription</p>
             <p>@Model.LongDescription</p>
-            <div>פורסם בתאריך:  @Model.Date.ToShortDateString()</div> 
+            <div>פורסם בתאריך:  @Model.Date.ToShortDateString()</div>
             <div>שם המפרסם:  @Model.OwnerId</div>
-            <div>מחיר:  $@Model.Price</div> 
+            <div>מחיר:  $@Model.Price</div>
             <div class="btn-group" role="group" aria-label="..." style="margin-bottom:10px;">
-            
-            <form action="/Home/AddToCard?id=@Model.Id" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#pressedBtn" id="itemInfo" method="post">
-                @*this button is not invoked directly but by pressing on AddToCard*@
-                <input type="submit" style="visibility:hidden" />
-            </form>
+
+                <form action="/Home/AddToCard?id=@Model.Id" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#pressedBtn" id="itemInfo" method="post">
+                    @*this button is not invoked directly but by pressing on AddToCard*@
+                    <input type="submit" style="visibility:hidden" />
+                </form>
                 @if (Session["ShoppingCard"] != null && ((List<eShopProject.Models.ProductView>)Session["ShoppingCard"]).Exists(p => p.Id == Model.Id))
                 {
                     <button type="button" class="btn btn-default btn-success" id="addBtn"><span class="fa fa-plus"></span>&nbsp;<span id="pressedBtn">הסר מהסל</span></button>
@@ -40,27 +40,22 @@
 
 
 
-
-
-
-
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 350px;">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 350px;" data-interval="false">
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox" style="height: 350px;">
 
-                   
-                    <div class="item active">
-                        <img height="350" width="350" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })" alt="Chania">
-                    </div>
+                        <div class="item active">
+                            <img id="image1" height="350" width="350" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })">
+                        </div>
 
-                    <div class="item">
-                        <img height="350" width="350" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })" alt="Chania">
-                    </div>
+                        <div class="item">
+                            <img id="image2" height="350" width="350" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 2 })">
+                        </div>
 
-                    <div class="item">
-                        <img height="350" width="350" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })" alt="Chania">
-                    </div>
+                        <div class="item">
+                            <img id="image3" height="350" width="350" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 3 })">
+                        </div>
 
                 </div>
 
@@ -75,30 +70,15 @@
                 </a>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-            @*<img class="img-responsive product-image-large" src="@Url.Action("ShowImage", "Images", new { id = Model.Id, imageNumber = 1 })" alt="" />*@
-
         </div>
     </div>
 
 </div>
 
 <script>
-
+    //turning the form submit button
     $('#addBtn').click(function (e) {
-
         $("#itemInfo").submit();
-        // Cancel the default action
-        e.preventDefault();
     });
+
 </script>

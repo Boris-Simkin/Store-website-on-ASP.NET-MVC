@@ -171,7 +171,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Models\LoginView.cs" />
     <Compile Include="Models\ProductImageView.cs" />
     <Compile Include="Models\ProductView.cs" />
@@ -199,6 +198,7 @@
     <Content Include="Views\Home\_TotalPrice.cshtml" />
     <Content Include="Views\Home\_AddBtn.cshtml" />
     <Content Include="Views\Home\_RemoveBtn.cshtml" />
+    <Content Include="Views\Home\PurchaseComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

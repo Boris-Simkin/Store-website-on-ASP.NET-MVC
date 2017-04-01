@@ -53,9 +53,14 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                             תפריט <i class="fa fa-bars"></i>
                         </button>
-
-                        <a class="navbar-brand" href="#page-top">eShop Project</a>
-
+                        @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+                        {
+                            <a class="navbar-brand" href="#page-top">eShop Project</a>
+                        }
+                        else
+                        {
+                            <a class="navbar-brand" href="/#page-top">eShop Project</a>
+                        }
 
 
                     </div>
@@ -63,29 +68,51 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="hidden">
-                                <a href="#page-top"></a>
+                                @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+                                {
+                                    <a href="#page-top"></a>
+                                }
+                                else
+                                {
+                                    <a href="/#page-top"></a>
+                                }
                             </li>
                             <li class="page-scroll">
-                                <a href="@MainAction#siteMap">מפת האתר</a>
+                                @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+                                {
+                                    <a href="@MainAction#siteMap">מפת האתר</a>
+                                }
+                                else
+                                {
+                                    <a href="/#siteMap">מפת האתר</a>
+                                }
                             </li>
                             <li class="page-scroll">
-                                <a href="@MainAction#mainPage">מסך ראשי</a>
+                                @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+                                {
+                                    <a href="@MainAction#mainPage">מסך ראשי</a>
+                                }
+                                else
+                                {
+                                    <a href="/#mainPage">מסך ראשי</a>
+                                }
+
                             </li>
                             <li class="page-scroll">
-                                <a href="@MainAction#about">אודותנו</a>
+                                <a href="#about">אודותנו</a>
                             </li>
                             <li class="page-scroll">
                                 @Html.ActionLink("רישום פרטים אישיים", "Registration", "Account")
                             </li>
 
                             <li class="page-scroll">
-                                @Html.ActionLink("סל קניות", "ShoppingCard")
+                                @Html.ActionLink("סל קניות", "ShoppingCard", "Home")
                             </li>
 
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <li class="page-scroll">
-                                    @Html.ActionLink("פרסם מודעה", "AddProduct")
+                                    @Html.ActionLink("פרסם מודעה", "AddProduct", "Home")
                                 </li>
                             }
 

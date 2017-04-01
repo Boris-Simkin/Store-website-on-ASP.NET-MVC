@@ -38,7 +38,7 @@ namespace eShopProject.Controllers
                 return View("Registration");
             }
 
-            return RedirectToAction("Main","Home");
+            return RedirectToAction("Main", "Home");
         }
 
         public ActionResult UpdateUser(UserView user)
@@ -61,13 +61,16 @@ namespace eShopProject.Controllers
                 //Found in the repository
                 if (userValid)
                 {
+                    //Setting the cookie with the username
                     FormsAuthentication.SetAuthCookie(login.Username, true);
                 }
                 else
-                    ModelState.AddModelError("", "שם המשתמש או הסיסמה לא נכונים");
-
+                    TempData["errMessage"] = "הפרטים שגויים";
             }
-              return RedirectToAction("Main", "Home");
+            else
+                TempData["errMessage"] = "הפרטים שגויים";
+
+            return RedirectToAction("Main", "Home");
         }
 
         public ActionResult LogOff()

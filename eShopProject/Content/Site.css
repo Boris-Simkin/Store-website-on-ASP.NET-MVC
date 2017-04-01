@@ -19,6 +19,10 @@ input[type=date] {
   color: #555555;
 }
 
+.hidden {
+    visibility:hidden;
+}
+
 #mainPage {
     padding-top: 10px;
 }
@@ -38,6 +42,11 @@ input[type=date] {
 .body-content {
     height: 600px;
     background-color: gray;
+}
+
+#PurchaseComplete {
+    margin-top: 150px;
+    height: 400px;
 }
 
 #ShoppingCard{
