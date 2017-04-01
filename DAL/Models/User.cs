@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    public class User //: IEntity
+    public class User 
     {
-        //[Column("Username")]
         [Key]
         public string Id { get; set; }
         public string FirstName { get; set; }

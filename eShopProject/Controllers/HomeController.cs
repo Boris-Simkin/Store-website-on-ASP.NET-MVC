@@ -28,10 +28,6 @@ namespace eShopProject.Controllers
         {
             //Getting the list of products from the session
             List<ProductView> products = (List<ProductView>)Session["ShoppingCard"];
-            //var DALproducts = repo.List;
-            //Converting the Product entity from the DAL
-            //List<ProductView> products = Mapper.Map<List<Product>, List<ProductView>>(DALproducts);
-
             List<ProductView> filteredProducts = new List<ProductView>();
             if (checkedProducts != null)
                 filteredProducts = products.Where(p => checkedProducts.Exists(cp => cp == p.Id)).ToList();
@@ -52,8 +48,6 @@ namespace eShopProject.Controllers
 
             return View(products);
         }
-
-
 
         public ActionResult AddToCard(int id)
         {
@@ -145,6 +139,10 @@ namespace eShopProject.Controllers
         }
         public ActionResult PurchaseComplete()
         {
+            foreach (var item in (List<ProductView>)Session["FilteredShoppingCard"])
+            {
+                repo.RemoveProduct(item.Id);
+            }
             Session["ShoppingCard"] = null;
             Session["FilteredShoppingCard"] = null;
             return View();
@@ -156,7 +154,6 @@ namespace eShopProject.Controllers
             ProductView product = Mapper.Map<Product, ProductView>(DALProduct);
             return View(product);
         }
-
 
 
     }

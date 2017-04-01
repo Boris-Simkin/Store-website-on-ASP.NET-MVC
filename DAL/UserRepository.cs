@@ -39,17 +39,6 @@ namespace DAL
             return user;
         }
 
-        //public User FindByUserName(string username)
-        //{
-        //    User user;
-        //    using (var context = new EShopEntities())
-        //    {
-        //        //Searching for user with same username
-        //        user = context.Users.FirstOrDefault(u => u.Id == username);
-        //    }
-        //    return user;
-        //}
-
         public bool Login(string username, string password)
         {
             User user;

@@ -65,5 +65,15 @@ namespace DAL
             }
         }
 
+        //Remove product by id
+        public void RemoveProduct(int productId)
+        {
+            using (var context = new EShopEntities())
+            {
+                context.Products.Remove(context.Products.First(p => p.Id == productId));
+                context.SaveChanges();
+            }
+        }
+
     }
 }

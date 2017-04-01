@@ -1,26 +1,28 @@
 ﻿body {
-   padding:0px;
+    padding: 0px;
 }
 
 [type="date"] {
-  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
-}
-[type="date"]::-webkit-inner-spin-button {
-  display: none;
-}
-[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
 }
 
+    [type="date"]::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    [type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+    }
+
 input[type=date] {
-  border: 1px solid #c4c4c4;
-  padding: 5px 12px;
-  width: 181px;
-  color: #555555;
+    border: 1px solid #c4c4c4;
+    padding: 5px 12px;
+    width: 181px;
+    color: #555555;
 }
 
 .hidden {
-    visibility:hidden;
+    visibility: hidden;
 }
 
 #mainPage {
@@ -35,8 +37,16 @@ input[type=date] {
     color: white;
 }
 
-.input-group input{
+.input-group input {
     background-color: #3D6C96;
+}
+
+.toolbar-selected {
+    color: white;
+    font-size: x-large;
+    margin-top: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .body-content {
@@ -49,7 +59,7 @@ input[type=date] {
     height: 400px;
 }
 
-#ShoppingCard{
+#ShoppingCard {
     margin-top: 150px;
     min-height: 400px;
 }
@@ -59,12 +69,12 @@ input[type=date] {
     height: 70vh;
 }
 
-#addProduct{
+#addProduct {
     margin-top: 150px;
-    height: 550px
+    height: 550px;
 }
 
-#registration{
+#registration {
     margin-top: 150px;
     height: 70vh;
 }
@@ -103,23 +113,25 @@ textarea {
     max-width: 280px;
 }
 
-/* make sidebar nav vertical */ 
+/* make sidebar nav vertical */
 @media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-}
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
 
+    .sidebar-nav .navbar ul {
+        float: none;
+        display: block;
+    }
+
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+
+        .sidebar-nav .navbar li a {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+}

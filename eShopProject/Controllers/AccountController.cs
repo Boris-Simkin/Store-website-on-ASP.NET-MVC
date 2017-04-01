@@ -43,6 +43,7 @@ namespace eShopProject.Controllers
 
         public ActionResult UpdateUser(UserView user)
         {
+            //Conveting userView to DAL
             User DALUser = Mapper.Map<UserView, User>(user);
             if (!ModelState.IsValid)
             {
@@ -56,6 +57,7 @@ namespace eShopProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Chacking the login parameters
                 bool userValid = repository.Login(login.Username, login.Password);
 
                 //Found in the repository

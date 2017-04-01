@@ -53,7 +53,7 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                             תפריט <i class="fa fa-bars"></i>
                         </button>
-                        @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+                        @if (ViewContext.RouteData.Values["action"].ToString() == "Main")
                         {
                             <a class="navbar-brand" href="#page-top">eShop Project</a>
                         }
@@ -102,17 +102,39 @@
                                 <a href="#about">אודותנו</a>
                             </li>
                             <li class="page-scroll">
-                                @Html.ActionLink("רישום פרטים אישיים", "Registration", "Account")
+                                @if (ViewContext.RouteData.Values["action"].ToString() != "Registration")
+                                {
+                                    @Html.ActionLink("רישום פרטים אישיים", "Registration", "Account")
+                                }
+                                else
+                                {
+                                    <div class="toolbar-selected">רישום פרטים אישיים</div>
+                                }
                             </li>
 
                             <li class="page-scroll">
-                                @Html.ActionLink("סל קניות", "ShoppingCard", "Home")
+                                @if (ViewContext.RouteData.Values["action"].ToString() != "ShoppingCard")
+                                {
+                                    @Html.ActionLink("סל קניות", "ShoppingCard", "Home")
+                                }
+                                else
+                                {
+                                    <div class="toolbar-selected">סל קניות</div>
+                                }
+
                             </li>
 
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <li class="page-scroll">
-                                    @Html.ActionLink("פרסם מודעה", "AddProduct", "Home")
+                                    @if (ViewContext.RouteData.Values["action"].ToString() != "AddProduct")
+                                    {
+                                        @Html.ActionLink("פרסם מודעה", "AddProduct", "Home")
+                                    }
+                                    else
+                                    {
+                                        <div class="toolbar-selected">פרסם מודעה</div>
+                                    }
                                 </li>
                             }
 
@@ -147,7 +169,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>אודות הפרוייקט</h3>
-                        <p> </p>
+                        <p>פרוייקט סוף קורס ASP.NET MVC</p>
                     </div>
                 </div>
             </div>
@@ -156,7 +178,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        &copy; 2016 בוריס סימקין
+                        &copy; 2017 בוריס סימקין
                     </div>
                 </div>
             </div>
@@ -169,9 +191,6 @@
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-
-
-
 
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

@@ -10,7 +10,6 @@ namespace eShopProject.Models
     {
         public int Id { get; set; }
         public string OwnerId { get; set; }
-        public string UserId { get; set; }
         [Required(ErrorMessage = "הכנס כותרת")]
         [Display(Name = "כותרת")]
         public string Title { get; set; }

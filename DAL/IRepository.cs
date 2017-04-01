@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public interface IRepository<TEntity> //where TEntity : IEntity
+    public interface IRepository<TEntity> 
     {
         List<TEntity> List { get; }
         TEntity Find(string id);

@@ -24,15 +24,12 @@ namespace eShopProject.Controllers
             {
                 case 1:
                     res = images.Picture1;
-                    TempData["image1"] = res != null;
                     break;
                 case 2:
                     res = images.Picture2;
-                    TempData["image2"] = res != null;
                     break;
                 case 3:
                     res = images.Picture3;
-                    TempData["image3"] = res != null;
                     break;
                 default:
                     break;
